@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+:root{
+  --primary: rgba(37,253,253,0.62)
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background-color: #121212;
+  color: wheat;
+}
+
+a{
+  text-decoration: none;
+ 
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  
+}
+
+.logo{
+  font-size:  2rem;
+  margin-top: 3vh;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--primary);
 }
 
-.App-link {
-  color: #61dafb;
+
+
+
+.sidebar{
+  backdrop-filter: blur(0px) brightness(130%);
+  color: wheat;
+  height: 100vh;
+  min-width:fit-content;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.mainContainer{
+  display: flex;
+}
+
+.routes {
+  margin-top: 7vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: space-between;
+  
+}
+
+
+.link_text {
+  display: flex;
+  /* white-space: nowrap; */
+  font-size: 2.4vh;
+  padding-top: 3px;
+}
+
+.link{
+  display: flex;
+  color: var(--primary);
+  justify-content: center; 
+  gap: 10px;
+  padding: 12% 0% 12% 2%;
+  border-right: 4px solid transparent;
+  width: 100%;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.link:hover{
+  border-right: 4px solid var(--primary);
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background: #090A0A;
+  
+}
+
+.Homepage{
+  display: flex;
+  height: 10vh;
+  width:100vw;
+  backdrop-filter: blur(0px) brightness(130%);
+  align-items: center;
+  color: var(--primary);
+  padding: 0% 4vh;
+  justify-content: space-between;
+}
+.title{
+  display: flex;
+  justify-self: left;
+  font-size: 4vh;
+}
+.accounts{
+  display: flex;
+  
+  justify-self: right;
+}
+
+#login{
+  padding: 0% 5% 0% 0%;
+}
+
+#signup{
+  padding: 0% 0% 0% 5%;
 }
