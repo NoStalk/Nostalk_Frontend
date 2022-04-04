@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css'
 import { AnimatePresence, motion } from "framer-motion";
-
+import  Typography  from "@mui/material/Typography";
 import { routes } from "./routes";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FaLaptopCode } from "react-icons/fa";
 
 function SideBar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+  const showAnimation = {
+    hidden: {
+      width: 0,
+      opacity: 0,
+      transition: {
+        duration: 0.1,
+      },
+    },
+    show: {
+      width: "auto",
+      opacity: 1,
+      transition: {
+        duration: 0.1,
+      },
+    },
+  };
+
   useEffect(() => {
     const leftalign = document.querySelectorAll(".link");
     const iconSize = document.querySelector(".logo")
@@ -22,28 +39,39 @@ function SideBar({ children }) {
       }
     }
     if (iconSize&&isOpen)
-      iconSize.style.fontSize = "3.5rem";
+      iconSize.style.fontSize = "5rem";
     if (iconSize && !isOpen)
       iconSize.style.fontSize = "2rem";
       
     
   }, [isOpen]);
   return (
-    <div className='mainContainer'>
-      <motion.div animate={{width: isOpen ? "10vw" : "2.5vw" }} className="sidebar" onMouseEnter={()=>setIsOpen(true)} onMouseLeave={()=>setIsOpen(false)}>
+     <>
+        <div className='mainSideContainer'>
+      <motion.div animate={{
+        width: isOpen ? "10vw" : "2.5vw", transition: {
+          duration: 0.3,
+          type: "spring",
+          damping: 12,
+      } }} className="sidebar" onMouseEnter={()=>setIsOpen(true)} onMouseLeave={()=>setIsOpen(false)}>
         <div className='logo'>
-          <FaLaptopCode />
+         <Link to="/"><FaLaptopCode /></Link> 
        </div>
        
         <section className='routes'>
           {routes.map((route) => (
-            <NavLink to={route.path} key={route.name} className="link" >
+            <NavLink  to={route.path} key={route.name} className="link" >
               <div className='icon' style={{fontSize: "4vh"}}>
                 {route.icon}
               </div>
               
               <AnimatePresence>
-                {isOpen && <motion.div className="link_text">
+                {isOpen && <motion.div
+                  variants={showAnimation}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  className="link_text">
                     {route.name}
                   </motion.div>}
                   
@@ -51,12 +79,31 @@ function SideBar({ children }) {
                 
             </NavLink>
           ))}
+        
         </section>
+       
       </motion.div>
-      {/* <main>
+      </div>
+      <div className='middleContainer' style={{ width: isOpen ? "90vw" : "97.5vw" }}>
+         <div className='mainTopContainer' >
+        <Link to="/" className="pagename">
+          <Typography variant="h4" gutterBottom component="div">
+             NOSTALK
+          </Typography>
+        </Link>
+      
+      </div>
+      
+      <main className="content" >
           {children}  
-        </main> */}
-    </div>
+      </main>
+      </div>
+     
+      
+   
+    </>
+      
+    
   )
 }
 
