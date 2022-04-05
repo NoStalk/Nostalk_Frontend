@@ -13,8 +13,8 @@
 
 .content{
   display: flex;
-  justify-content: center;
-  align-items: center;
+
+  align-items: center; 
   height: 90vh;
   padding: 0% 3%;
 }
@@ -140,7 +140,8 @@ body{
   height: 60vh;
   width: 60vw;
   margin: 2% 2%;
-  background-color: blueviolet;
+  
+  
 }
 .submissionpiechart{
   height: 30vh;
