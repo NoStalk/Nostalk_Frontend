@@ -7,35 +7,34 @@ export const routes = [
   {
     path: "/profile",
     name: "Profile",
-    icon: <AiFillProfile />
+    icon: <MdAccountCircle />,
   },
-    {
+  {
     path: "/submissions",
     name: "Submissions",
-    icon: <MdArchive />
+    icon: <MdArchive />,
   },
   {
     path: "/friends",
     name: "Friends",
-    icon: <FaUserFriends />
+    icon: <FaUserFriends />,
   },
-  
+
   {
     path: "/contests",
     name: "Contests",
-    icon: <MdSportsScore />
+    icon: <MdSportsScore />,
   },
- 
+
   {
     path: "/leaderboard",
     name: "LeaderBoards",
-    icon: <MdLeaderboard />
+    icon: <MdLeaderboard />,
   },
-
 
   {
     path: "/accountinfo",
     name: "Account Info",
-    icon: <MdAccountCircle />
+    icon: <AiFillProfile />,
   },
-]
+];
