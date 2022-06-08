@@ -211,10 +211,29 @@ body {
   align-items: center;
 }
 
-.homepage-second-text {
+.homepage-second-text, .homepage-third-text, .homepage-fourth-text {
   font-family: "Courgette";
   color: var(--primary);
   margin: 0% 0% 0% 5%;
+}
+
+.homepage-third{
+  height: 100%;
+  width: 100%;
+  background: url("../public/background/bgm3.svg");
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.homepage-fourth{
+  height: 100%;
+  width: 100%;
+  max-height: fit-content;
+  background: url("../public/background/bgm4.svg");
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .title {
