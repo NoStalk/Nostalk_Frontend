@@ -6,8 +6,6 @@
 :root {
   --primary: #dcdee2;
   font-family: "Open Sans", sans-serif;
-  --secondary: #15161b;
-  --ter: #4695bd;
 }
 
 .App {
@@ -16,7 +14,7 @@
   width: 100%;
   height: fit-content;
   background-color: #15161b;
-  color: var(--primary);
+  color: wheat;
   overflow:auto;
 }
 
@@ -233,13 +231,12 @@ body {
 /* CSS for the login and signup sliding section */
 
 
-
 .container {
   position: relative;
   width: 100%;
   background-color: var(--secondary);
+
   min-height: 100vh;
-  color: var(--primary);
   overflow: hidden;
 }
 
@@ -286,7 +283,8 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: var(--primary);
+  /* color: #444; */
+  color: #d5d5d5;
   margin-bottom: 10px;
 }
 
@@ -392,7 +390,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #1e4db7 0%, #04befe 100%);
+  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -450,7 +448,7 @@ form.sign-in-form {
   font-size: 0.8rem;
 }
 
-.btn.transparent:hover{
+.btn.transparent:hover {
   background-color: #15161b;
 }
 
@@ -518,6 +516,7 @@ form.sign-in-form {
   .panels-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr;
+    background-color: var(--ter);
   }
 
   .panel {
@@ -533,6 +532,7 @@ form.sign-in-form {
   }
 
   .left-panel {
+    background-color: #4695bd;
     grid-row: 1 / 2;
   }
 

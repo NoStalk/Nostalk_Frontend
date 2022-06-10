@@ -15,16 +15,7 @@ const Navdiv = () => {
                 }}
                 
             >
-                <h5>Login</h5>
-            </Link>
-            <Link
-                to="/signup"
-                style={{
-                    color: "#dcdee2",
-                }}
-                
-            >
-                <h5>Signup</h5>
+                <h5>Login/Signup</h5>
             </Link>
         </div>
     );

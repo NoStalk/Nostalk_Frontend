@@ -8,7 +8,6 @@ import Navdiv from "../components/Navdiv";
 function SideBar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
- 
   const showAnimation = {
     hidden: {
       width: 0,
@@ -88,12 +87,12 @@ function SideBar({ children }) {
           </section>
         </motion.div>
       </div>
-      <div
+      {/* <div
         className="middleContainer"
         style={{ width: isOpen ? "90vw" : "97.5vw" }}
       >
         <main className="content">{children}</main>
-      </div>
+      </div> */}
     </>
   );
 }

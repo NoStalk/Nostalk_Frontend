@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
+
+
 :root {
   --primary: #dcdee2;
   font-family: "Open Sans", sans-serif;
@@ -19,6 +21,8 @@
   color: var(--primary);
   overflow:auto;
 }
+
+
 
 a {
   text-decoration: none;
@@ -46,9 +50,9 @@ body {
   height: 100vh;
   min-width: fit-content;
 
-}
+} 
 
-.logo {
+ .logo {
   font-size: 2rem;
   margin-top: 3vh;
 
@@ -56,7 +60,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   color: #1e4db7;
-}
+} 
 
 .routes {
   margin-top: 7vh;
@@ -65,7 +69,7 @@ body {
   flex-wrap: wrap;
   gap: 2px;
   justify-content: space-between;
-}
+} */
 
 .link {
   display: flex;
@@ -82,11 +86,11 @@ body {
 .link:hover {
   border-right: 4px solid var(--primary);
   transition: 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  background: /*#090A0A*/ #dcdee2;
+  background:  #dcdee2;
   align-items: center;
   text-decoration: none;
   color: #20232a;
-}
+} */
 
 .active {
   border-right: 4px solid var(--primary);
@@ -95,7 +99,6 @@ body {
 
 .link_text {
   display: flex;
-  /* white-space: nowrap; */
   font-size: 2vh;
   padding-top: 3px;
   text-decoration: none;
@@ -122,16 +125,7 @@ body {
   text-decoration: none;
 }
 
-/* .Homepage{
-  display: flex;
-  height: 10vh;
-  width:100vw;
-  backdrop-filter: blur(0px) brightness(130%);
-  align-items: center;
-  color: var(--primary);
-  padding: 0% 4vh;
-  justify-content: space-between;
-} */
+
 
 .homepage {
   width: 100%;
@@ -151,10 +145,10 @@ body {
   width: 100%;
   height: 30%;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
+
 }
 
-@media screen and (max-width: 500px) {
+ @media screen and (max-width: 500px) {
   .homepage {
     max-height: fit-content;
   }
@@ -181,7 +175,7 @@ body {
   height: 100%;
 
   align-content: center;
-  /* flex-wrap: wrap; */
+  
   justify-content: space-between;
 }
 
@@ -230,16 +224,25 @@ body {
   align-items: center;
 }
 
-/* CSS for the login and signup sliding section */
+.title {
+  display: flex;
+  justify-self: left;
+  font-size: 4vh;
+}
+.accounts {
+  display: flex;
 
+  justify-self: right;
+} 
+/* CSS for the login and signup sliding section */
 
 
 .container {
   position: relative;
   width: 100%;
   background-color: var(--secondary);
+
   min-height: 100vh;
-  color: var(--primary);
   overflow: hidden;
 }
 
@@ -286,7 +289,8 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: var(--primary);
+  /* color: #444; */
+  color: #d5d5d5;
   margin-bottom: 10px;
 }
 
@@ -392,7 +396,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #1e4db7 0%, #04befe 100%);
+  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -450,7 +454,7 @@ form.sign-in-form {
   font-size: 0.8rem;
 }
 
-.btn.transparent:hover{
+.btn.transparent:hover {
   background-color: #15161b;
 }
 
@@ -518,6 +522,7 @@ form.sign-in-form {
   .panels-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr;
+    background-color: var(--ter);
   }
 
   .panel {
@@ -533,6 +538,7 @@ form.sign-in-form {
   }
 
   .left-panel {
+    background-color: #4695bd;
     grid-row: 1 / 2;
   }
 
@@ -625,4 +631,35 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+}
+
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.infotable {
+  height: 60vh;
+  width: 60vw;
+  margin: 2% 2%;
+}
+.submissionpiechart {
+  height: 30vh;
+  width: 10vw;
+  margin: 2% 2%;
+  background-color: blueviolet;
+}
+.contestratings {
+  height: 30vh;
+  width: 10vw;
+  margin: 2% 2%;
+  background-color: blueviolet;
+}
+
+/* svg element */
+
+.stats {
 }

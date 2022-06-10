@@ -16,7 +16,7 @@ const Homepage = (props) => {
 
   const animation = useAnimation();
   useEffect(() => {
-    console.log(inView);
+    
     if (inView)
       animation.start({
         opacity: 1,
@@ -97,7 +97,7 @@ const Homepage = (props) => {
           >
             NOSTALK
           </h1>
-          <Navdiv />
+          {!isLoggedIn&&<Navdiv />}
         </div>
         <div className="homepage-lowerContainer" ref={ref}>
           <Typography level={3}></Typography>
@@ -139,6 +139,7 @@ const Homepage = (props) => {
           display: "flex",
           transform: "rotate(180deg)",
           border: "transparent",
+          backgroundColor: "#15161b",
         }}
       />
       <motion.div ref={ref2} className="homepage-second">
@@ -220,7 +221,8 @@ const Homepage = (props) => {
         />
       </div>
 
-      <div className="homepage-fifth"></div>
+      {/* <div className="homepage-fifth"></div> */}
+      
     </div>
   );
 };
