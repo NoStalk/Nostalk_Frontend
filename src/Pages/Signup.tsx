@@ -1,28 +1,30 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import '../App.css'
 const Signup = () => {
-    useEffect(() => {
-      const sign_in_btn = document.querySelector("#sign-in-btn");
-      const sign_up_btn = document.querySelector("#sign-up-btn");
-      const container = document.querySelector(".container");
-      if (sign_up_btn && sign_in_btn) {
-        sign_up_btn.addEventListener("click", () => {
-          container.classList.add("sign-up-mode");
-        });
-        sign_in_btn.addEventListener("click", () => {
-          container.classList.remove("sign-up-mode");
-        });
+  useEffect(() => {
+    const sign_in_btn = document.querySelector("#sign-in-btn");
+    const sign_up_btn = document.querySelector("#sign-up-btn");
+    const container = document.querySelector(".container");
+    if (sign_up_btn && sign_in_btn) {
+      sign_up_btn.addEventListener("click", () => {
+        if (container !== null) container.classList.add("sign-up-mode");
+      });
+      sign_in_btn.addEventListener("click", () => {
+        if (container !== null) container.classList.remove("sign-up-mode");
+      });
 
-        return [
-          sign_up_btn.removeEventListener("click", () => {
-            container.classList.add("sign-up-mode");
-          }),
-          sign_in_btn.removeEventListener("click", () => {
-            container.classList.remove("sign-up-mode");
-          }),
-        ];
+      return () => {
+
+        sign_up_btn.removeEventListener("click", () => {
+          if (container !== null) container.classList.add("sign-up-mode");
+        })
+        sign_in_btn.removeEventListener("click", () => {
+          if (container !== null) container.classList.remove("sign-up-mode");
+        })
+
       }
-    }, []);
+    }
+  }, []);
   return (
     <div className="login-main">
       <div className="container">
