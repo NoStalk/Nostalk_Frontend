@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import { Avatar } from '@mui/material';
-import ProfileCards from './../components/ProfileCards';
+import ProfileCards from '../components/ProfileCards';
 import DropDown from './../components/DropDown';
 
 const Profile = () => {

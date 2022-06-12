@@ -8,7 +8,8 @@ import {
   StatArrow,
   StatGroup,
 } from "@chakra-ui/react";
-function ProfileCards(props) {
+type ProfileCardProps = {country: boolean, toptext: string, bottomtext: string};
+function ProfileCards(props: ProfileCardProps) {
   const country = props.country;
   const toptext = props.toptext;
   const bottomtext = props.bottomtext;
