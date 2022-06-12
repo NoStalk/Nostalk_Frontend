@@ -3,7 +3,7 @@ import "./App.css";
 import SideBar from './Pages/SideBar';
 import { BrowserRouter as Router ,Routes, Route } from "react-router-dom";
 import { AccountInfo, Contests, Friends, Homepage, Leaderboard, Profile, Submissions, Login, Signup} from "./Pages";
-
+import "@fontsource/inter";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);  

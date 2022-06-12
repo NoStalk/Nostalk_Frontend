@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Asap:ital@1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+@import '../node_modules/@syncfusion/ej2-layouts/styles/material.css';
 
 :root {
   --primary: #dcdee2;
@@ -625,4 +626,61 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+}
+
+
+/* Profile Page */
+.profile{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.top-panel{
+margin-top: 1%;
+display: flex;
+width: 98%;
+height: 10%;
+justify-content: space-between;
+border-radius: 25px;
+margin-bottom: 2%;
+}
+
+.card-panel{
+  /* margin-top: -8%; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-evenly;
+  width: 98%;
+  height: 20%;
+
+  border-radius: 25px;
+  margin-bottom: 2%;
+}
+
+.data-panel{
+  width: 98%;
+  height: 60%;
+  background-color: #1b1d23;
+  border-radius: 25px;
+  margin-bottom: 2%;
+}
+
+.submission-panel, .contest-panel, .activity-panel{
+ height: 90%;
+ width: 98%;
+ background-color: #1b1d23;
+ border-radius: 25px;
+ margin-bottom: 2%;
+}
+
+.contest-panel{
+
+}
+
+.activity-panel{
 }
