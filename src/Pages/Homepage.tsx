@@ -5,10 +5,14 @@ import { Text } from "@chakra-ui/react";
 import { Typography } from "antd";
 import { animate, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { type } from "os";
 
 const { Title } = Typography;
 
-const Homepage = (props) => {
+
+type HomePageProps = { isLoggedIn: boolean }
+
+const Homepage = (props: HomePageProps) => {
   const isLoggedIn = props.isLoggedIn;
   const { ref, inView } = useInView({
     threshold: 0.2,
@@ -16,7 +20,7 @@ const Homepage = (props) => {
 
   const animation = useAnimation();
   useEffect(() => {
-    
+
     if (inView)
       animation.start({
         opacity: 1,
@@ -68,23 +72,23 @@ const Homepage = (props) => {
       });
   }, [inView3]);
 
-    const { ref: ref4, inView: inView4 } = useInView({
-      threshold: 0.2,
-    });
-    const animationFourth = useAnimation();
-    useEffect(() => {
-      if (inView4)
-        animationFourth.start({
-          x: 0,
-          transition: {
-            duration: 0.5,
-          },
-        });
-      else
-        animationFourth.start({
-          x: "-400vw",
-        });
-    }, [inView4]);
+  const { ref: ref4, inView: inView4 } = useInView({
+    threshold: 0.2,
+  });
+  const animationFourth = useAnimation();
+  useEffect(() => {
+    if (inView4)
+      animationFourth.start({
+        x: 0,
+        transition: {
+          duration: 0.5,
+        },
+      });
+    else
+      animationFourth.start({
+        x: "-400vw",
+      });
+  }, [inView4]);
 
   return (
     <div className="homepage ">
@@ -97,10 +101,10 @@ const Homepage = (props) => {
           >
             NOSTALK
           </h1>
-          {!isLoggedIn&&<Navdiv />}
+          {!isLoggedIn && <Navdiv />}
         </div>
         <div className="homepage-lowerContainer" ref={ref}>
-          <Typography level={3}></Typography>
+          <Typography.Title level={3}></Typography.Title>
           {/* <h2 style={{ height: "fit-content", margin: "3% 0% 0% 3%" }}>
           Keep Track of your entire interview preparation{" "}
         </h2> */}
@@ -222,7 +226,7 @@ const Homepage = (props) => {
       </div>
 
       {/* <div className="homepage-fifth"></div> */}
-      
+
     </div>
   );
 };

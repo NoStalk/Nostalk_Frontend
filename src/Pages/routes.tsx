@@ -1,7 +1,8 @@
-import { MdHome, MdLeaderboard,MdLogin, MdAccountCircle, MdSportsScore, MdArchive } from "react-icons/md"
+import { MdHome, MdLeaderboard, MdLogin, MdAccountCircle, MdSportsScore, MdArchive } from "react-icons/md"
 import { AiFillProfile } from "react-icons/ai"
 import { GiArchiveRegister } from "react-icons/gi"
 import { FaUserFriends } from "react-icons/fa"
+import React from "react";
 
 export const routes = [
   {

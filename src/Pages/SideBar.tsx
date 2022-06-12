@@ -5,7 +5,7 @@ import { routes } from "./routes";
 import { NavLink, Link } from "react-router-dom";
 import { SiGraphql } from "react-icons/si";
 import Navdiv from "../components/Navdiv";
-function SideBar({ children }) {
+function SideBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const showAnimation = {
@@ -28,8 +28,8 @@ function SideBar({ children }) {
 
 
   useEffect(() => {
-    const leftalign = document.querySelectorAll(".link");
-    const iconSize = document.querySelector(".logo");
+    const leftalign = document.querySelectorAll(".link") as NodeListOf<HTMLElement>;
+    const iconSize = document.querySelector(".logo") as HTMLElement;
     if (leftalign) {
       for (let i = 0; i < leftalign.length; i++) {
         leftalign[i].style.justifyContent = "left";
