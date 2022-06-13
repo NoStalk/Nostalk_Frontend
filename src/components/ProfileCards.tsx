@@ -8,19 +8,28 @@ import {
   StatArrow,
   StatGroup,
 } from "@chakra-ui/react";
-type ProfileCardProps = {country: boolean, toptext: string, bottomtext: string};
+
+import { FcBullish, FcApproval, FcRatings } from "react-icons/fc";
+import { IoMdPeople } from "react-icons/io";
+
+const icons = [IoMdPeople, FcBullish, FcApproval, FcRatings];
+
+type ProfileCardProps = {
+  country: boolean;
+  toptext: string;
+  bottomtext: string;
+};
 function ProfileCards(props: ProfileCardProps) {
   const country = props.country;
   const toptext = props.toptext;
   const bottomtext = props.bottomtext;
-
   return (
     <div
       style={{
-        backgroundColor: "#1b1d23",
+        backgroundColor: "#121212",
         width: "18%",
         height: "100%",
-        borderRadius: "25px",
+        borderRadius: "10px",
         fontFamily: "Inter",
         display: "flex",
         flexDirection: "column",
@@ -29,32 +38,14 @@ function ProfileCards(props: ProfileCardProps) {
       }}
     >
       {/* <img src="./illustrations/profile.svg" alt="profile" /> */}
-      <div
-        className="icon-box"
-        style={{
-          width: "50%",
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "#4695bd",
-          borderRadius: "100%",
-          position: "absolute",
-          right: "0px",
-        }}
-      >
-        <img
-          src="./illustrations/profile.svg"
-          alt="profile"
-          style={{
-            width: "50%",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "#4695bd",
-            borderRadius: "100%",
-            position: "absolute",
-            right: "0px",
-          }}
-        />
-      </div>
+
+      {country && <IoMdPeople className="profile-card-icons" />}
+      {toptext === "Acceptance" && (
+        <FcApproval className="profile-card-icons" />
+      )}
+      {toptext === "Streak" && <FcBullish className="profile-card-icons" />}
+      {toptext === "Questions" && <FcRatings className="profile-card-icons" />}
+
       <div
         className="card-content"
         style={{
@@ -87,10 +78,9 @@ function ProfileCards(props: ProfileCardProps) {
             bottom: "0px",
             right: "0px",
             margin: "0rem 1rem 2rem 0rem",
-
           }}
         >
-          <StatHelpText>
+          <StatHelpText style={{ color: "green" }}>
             <StatArrow type="increase" style={{ color: "green" }} />
             23%
           </StatHelpText>
