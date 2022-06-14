@@ -1,5 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -17,8 +16,7 @@ function DropDown() {
       <FormControl sx={{ m: 1, minWidth: 250 }}>
         <InputLabel id="demo-simple-select-autowidth-label">
           {" "}
-          <Avatar alt="Remy Sharp" src="./logo192.png" />
-          <h3 style={{ margin: "-2rem 0rem 0rem 4rem" }}>HI, ZEUS</h3>
+
         </InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
