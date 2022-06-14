@@ -117,30 +117,35 @@ export const data = [
 ]
 
 export const doughnutData = {
-    labels: ['Codeforces', 'Codechef', 'Spoj', 'Hackerearth', 'Atcoder', 'Leetcode'],
+  labels: [
+    "Codeforces",
+    "Codechef",
+    "Spoj",
+    "Hackerearth",
+    "Atcoder",
+    "Leetcode",
+  ],
     datasets: [
-        {
-            label: 'No of Questions solved by each platform',
-            data: [213, 103, 52, 28, 116, 504],
-            backgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56',
-                '#23C6C8',
-                '#F8FF',
-                '#00FF00'
-            ],
-            borderColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56',
-                '#23C6C8',
-                '#F8FF',
-                '#00FF00'
-
-            ],
-            borderWidth: 1,
-        },
+      {
+        label: "No of Questions solved by each platform",
+        data: [213, 103, 52, 28, 116, 504],
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#23C6C8",
+          "#F8FF",
+          "#00FF00",
+        ],
+        borderColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#23C6C8",
+          "#F8FF",
+          "#00FF00",
+        ],
+        borderWidth: 1,
+      },
     ],
-
 };

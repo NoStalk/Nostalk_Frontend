@@ -26,7 +26,7 @@ function ProfileCards(props: ProfileCardProps) {
   return (
     <div
       style={{
-        backgroundColor: "#121212",
+        backgroundColor: "#27293d",
         width: "18%",
         height: "100%",
         borderRadius: "10px",
@@ -42,7 +42,7 @@ function ProfileCards(props: ProfileCardProps) {
       {country && <IoMdPeople className="profile-card-icons" />}
       {toptext === "Acceptance" && (
         <FcApproval className="profile-card-icons" />
-      )}
+        )}
       {toptext === "Streak" && <FcBullish className="profile-card-icons" />}
       {toptext === "Questions" && <FcRatings className="profile-card-icons" />}
 
@@ -52,6 +52,7 @@ function ProfileCards(props: ProfileCardProps) {
           padding: "2.6rem 1rem 1.5rem 1rem",
         }}
       >
+        <hr style={{ width: "80%", opacity: "0.2" }} />
         <p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{toptext}</p>
         <p style={{ marginTop: "-9%", fontWeight: "lighter", opacity: "0.6" }}>
           {bottomtext}

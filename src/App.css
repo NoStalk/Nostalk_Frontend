@@ -16,7 +16,7 @@
   flex-direction: row;
   width: 100%;
   height: fit-content;
-  background-color: #15161b;
+  background-color: #1e1e2f;
   color: var(--primary);
   overflow: auto;
 }
@@ -672,7 +672,7 @@ form.sign-in-form {
 }
 
 .data-panel-grid{
-  background-color: #121212;
+  background-color: #27293d;
   border-radius: 25px;
   padding-right: 1rem;
   width: fit-content;
@@ -683,7 +683,7 @@ form.sign-in-form {
   justify-content: center;
   margin-left: 1rem;
   border-radius: 25px;
-  background-color: #121212;
+  background-color: #27293d;
   color: var(--primary);
 }
 
