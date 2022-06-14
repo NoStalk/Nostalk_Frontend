@@ -1,4 +1,4 @@
-export { default as AccountInfo } from "./AccountInfo";
+export { default as AccountInfo } from "../components/AccountInfo";
 export { default as Contests } from "./Contests";
 export { default as Friends } from "./Friends";
 export { default as Homepage } from "./Homepage";
