@@ -1,0 +1,52 @@
+.mainDiv {
+    background-color: rgb(36, 36, 36);
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    height: 5em;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    gap: 0rem 1rem;
+
+    line-height: 1.6;
+
+    margin-right: 0rem;
+    margin-left: auto;
+}
+
+.mainDiv img {
+    aspect-ratio: 1 / 1;
+}
+
+.logoDiv {
+    height: 70%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: beige;
+    border-radius: 205rem;
+    margin-left: 1rem;
+}
+
+.linkTag {
+    height: 90%;
+    aspect-ratio: 1 / 1;
+    /* background-color: aqua; */
+    margin-left: auto;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.linkTag svg {
+    height: 90%;
+    aspect-ratio: 1 / 1;
+}
+
+
+
+.vl {
+    border-left: 2px solid wheat;
+    height: 80%;
+}
