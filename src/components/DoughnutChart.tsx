@@ -9,7 +9,7 @@ const DoughnutChart = () => {
   ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
   ChartJS.defaults.color = "#fff";
   ChartJS.defaults.elements.arc.borderWidth = 20;
-  ChartJS.defaults.font.family = "Inter";
+  ChartJS.defaults.font.family = "Open Sans";
   const dataArray = data.datasets[0].data;
   const totalValue = dataArray.reduce((a, b) => a + b, 0);
   console.log(totalValue);
