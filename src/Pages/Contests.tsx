@@ -58,7 +58,7 @@ function Contests() {
           <FullCalendar
             height="90vh"
             plugins={[dayGridPlugin, interactionPlugin]}
-            dayMaxEvents={2}
+            dayMaxEvents={true}
             views={{
               dayGrid: {
                 // options apply to dayGridMonth, dayGridWeek, and dayGridDay views

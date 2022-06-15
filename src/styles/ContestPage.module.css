@@ -13,11 +13,11 @@
 
 
 .calenderDiv {
-    width: 70%;
+    width: 70vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1 0 auto;
+    flex: 1 0 70vw;
 
 }
 
@@ -39,7 +39,7 @@
     flex-direction: column;
     justify-content: flex-start;
     height: 95%;
-    width: 90%;
+    width: 100%;
     /* gap: 1.4rem 0rem; */
     overflow-y: scroll;
     /* overflow-y: hidden; */
