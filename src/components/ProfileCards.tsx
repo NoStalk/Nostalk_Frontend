@@ -52,7 +52,7 @@ function ProfileCards(props: ProfileCardProps) {
           padding: "2.6rem 1rem 1.5rem 1rem",
         }}
       >
-        <hr style={{ width: "80%", opacity: "0.2" }} />
+        <hr style={{ width: "60%", opacity: "0.2" }} />
         <p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{toptext}</p>
         <p style={{ marginTop: "-9%", fontWeight: "lighter", opacity: "0.6" }}>
           {bottomtext}
