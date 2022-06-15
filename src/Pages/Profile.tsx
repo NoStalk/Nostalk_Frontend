@@ -3,23 +3,8 @@ import "../App.css";
 import { Avatar } from "@mui/material";
 import ProfileCards from "../components/ProfileCards";
 import { Button } from "@mui/material";
-import {
-  GridComponent,
-  ColumnsDirective,
-  ColumnDirective,
-  Resize,
-  Sort,
-  ContextMenu,
-  Filter,
-  Page,
-  ExcelExport,
-  PdfExport,
-  Edit,
-  Inject,
-} from "@syncfusion/ej2-react-grids";
-import { dataGrid, data } from './../data/websitedata';
+import { Columns, data } from './../data/websitedata';
 import DoughnutChart from './../components/DoughnutChart';
-
 const Profile = () => {
   return (
     <div className="profile">
@@ -64,15 +49,9 @@ const Profile = () => {
          />
       </div>
       <div className="data-panel">
-        <div className="data-panel-grid" >
-          <GridComponent id="gridcomp" dataSource={data} rowHeight={60} gridLines="Vertical" >
-            <ColumnsDirective>
-              {dataGrid.map((item, index) => (
-                <ColumnDirective key={index} {...item} />
-              ))}
-            </ColumnsDirective>
-          </GridComponent>
-        </div>
+        <div className="data-panel-grid">
+            
+          </div>
         <div className="data-panel-chart">
           <DoughnutChart />
         </div>

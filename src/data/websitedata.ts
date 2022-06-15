@@ -1,61 +1,9 @@
 
 
 
-export const dataGrid = [
-
-    {
-        headerText: 'Platform',
-        textAlign: "Center",
-        width: '120',
-        
-
-    },
-
-    {
-        field: 'Name',
-        headerText: 'Name',
-        width: '150',
-        textAlign: 'Center',
-    },
-
-    {
-        field: 'Solved',
-        headerText: 'Total Solved',
-        textAlign: 'Center',
-        editType: 'numericedit',
-        width: '150',
-    },
-
-    {
-        field: 'Contest',
-        headerText: 'Total Contests',
-        textAlign: 'Center',
-        editType: 'numericedit',
-        width: '150',
-    },
-
-    {
-        field: 'Rating',
-        headerText: 'Current Rating',
-        textAlign: 'Center',
-        editType: 'numericedit',
-        width: '150',
-    },
-
-    {
-        field: 'Submissions',
-        headerText: 'Total Submissions',
-        textAlign: 'Center',
-        editType: 'numericedit',
-        width: '150',
-    }
-];
-
-
-
 export const data = [
     {
-        id: 1,
+        platform: 1,
         Name: 'codeforces',
         url: 'https://codeforces.com/',
         Solved: 213,
@@ -65,7 +13,7 @@ export const data = [
 
     },
     {
-        id: 2,
+        platform: 2,
         Name: 'codechef',
         url: 'https://codechef.com/',
         Solved: 103,
@@ -75,7 +23,7 @@ export const data = [
 
     },
     {
-        id: 3,
+        platform: 3,
         Name: 'spoj',
         url: 'https://spoj.com/',
         Solved: 52,
@@ -85,7 +33,7 @@ export const data = [
 
     },
     {
-        id: 4,
+        platform: 4,
         Name: 'hackerearth',
         url: 'https://www.hackerearth.com/',
         Solved: 28,
@@ -95,7 +43,7 @@ export const data = [
 
     },
     {
-        id: 5,
+        platform: 5,
         Name: 'atcoder',
         url: 'https://atcoder.jp/',
         Solved: 116,
@@ -105,7 +53,7 @@ export const data = [
 
     },
     {
-        id: 6,
+        platform: 6,
         Name: 'leetcode',
         url: 'https://leetcode.com/',
         Solved: 504,
@@ -114,7 +62,40 @@ export const data = [
         Submissions: 300,
 
     }
-]
+];
+
+export const Columns = [
+    {
+        Header: 'Platform',
+        accessor: 'platform',
+    },
+    {
+        Header: 'Name',
+        accessor: 'Name',
+    },
+    {
+        Header: 'url',
+        accessor: 'url',
+    },
+    {
+        Header: 'Solved',
+        accessor: 'Solved',
+    },
+    {
+        Header: 'Contest',
+        accessor: 'Contest',
+    },
+    {
+        Header: 'Rating',
+        accessor: 'Rating',
+    },
+    {
+        Header: 'Submissions',
+        accessor: 'Submissions',
+    }
+];
+
+
 
 export const doughnutData = {
   labels: [
