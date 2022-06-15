@@ -34,12 +34,12 @@ export default function EventCard({ event }: { event: Event }) {
                 <br />
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <img src="/assets/earth.svg" height="20rem" />
-                    <Link href={"https:/" + event.publisher} underline="hover" target="__blank">
+                    <a href={"https://" + event.publisher} className={styles.publisherLink} target="__blank">
                         {event.publisher}
-                    </Link>
+                    </a>
                 </span>
             </div>
-            <a className={styles.linkTag} href={event.contestLink} target="__blank"> <FontAwesomeIcon style={{ color: "wheat" }} icon={faExternalLinkSquare} /></a>
+            <a className={styles.linkTag} href={event.contestLink} target="__blank"> <FontAwesomeIcon icon={faExternalLinkSquare} /></a>
         </div>
     )
 }
