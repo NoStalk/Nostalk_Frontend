@@ -14,7 +14,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={< Homepage isLoggedIn={isLoggedIn} />} />
-        <Route path="/accounteinfo" element={< AccountInfo />} />
+        <Route path="/accountinfo" element={< AccountInfo />} />
         <Route path="/contests" element={< Contests />} />
         <Route path="/friends" element={< Friends />} />
         <Route path="/leaderboard" element={< Leaderboard />} />

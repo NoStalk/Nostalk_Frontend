@@ -12,8 +12,8 @@
 
     margin-right: 0rem;
     margin-left: auto;
-    margin-top: 0.7rem;
-    margin-bottom: 0.7rem;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
 }
 
 .mainDiv img {
@@ -24,7 +24,7 @@
     height: 70%;
     aspect-ratio: 1 / 1;
     display: flex;
-    /* flex: 0 0 content; */
+    flex: 0 0 content;
     align-items: center;
     justify-content: center;
     background-color: beige;
