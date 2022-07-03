@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "../App.css";
 import { Avatar } from "@mui/material";
 import ProfileCards from "../components/ProfileCards";
 import { Button } from "@mui/material";
-import { Columns, data } from './../data/websitedata';
-import DoughnutChart from './../components/DoughnutChart';
+import { Columns, MockData } from "./../data/websitedata";
+import { useTable } from "react-table";
+import DoughnutChart from "./../components/DoughnutChart";
+
 const Profile = () => {
+  type rowdata = {
+    platform: number;
+    Name: string;
+    url: string;
+    Solved: number;
+    Contest: number;
+    Rating: number;
+    Submissions: number;
+  };
+  const columns = useMemo(() => Columns, []);
+  const data = useMemo(() => MockData, []);
+
+  const tableInstance = useTable({
+    columns,
+    data,
+  });
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance;
+
   return (
     <div className="profile">
       <div className="top-panel">
@@ -27,31 +49,53 @@ const Profile = () => {
         </div>
       </div>
       <div className="card-panel">
-        <ProfileCards
-          toptext={"ZEUS"}
-          bottomtext={"India"}
-          country={true}
-      />
+        <ProfileCards toptext={"ZEUS"} bottomtext={"India"} country={true} />
         <ProfileCards
           toptext={"Acceptance"}
           bottomtext={"69%"}
           country={false}
-         />
+        />
         <ProfileCards
           toptext={"Streak"}
           bottomtext={"69 days"}
           country={false}
-          />
+        />
         <ProfileCards
           toptext={"Questions"}
           bottomtext={"69%"}
           country={false}
-         />
+        />
       </div>
       <div className="data-panel">
         <div className="data-panel-grid">
-            
-          </div>
+          <table {...getTableProps()}>
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th {...column.getHeaderProps()} className="table-column">
+                      {column.render("Header")}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
         <div className="data-panel-chart">
           <DoughnutChart />
         </div>

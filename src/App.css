@@ -679,19 +679,34 @@ form.sign-in-form {
 }
 
 .data-panel-grid{
-  width:50%;
+  width:60%;
   background-color: #27293d;
   border-radius: 25px;
   padding-right: 1rem;
+  display: flex;
+  justify-content: space-around;
 }
+
 .data-panel-chart{
-  width: 45%;
+  width: 40%;
   display: flex;
   justify-content: center;
   margin-left: 1rem;
   border-radius: 25px;
   background-color: #27293d;
   color: var(--primary);
+}
+
+table {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  margin: 1rem 0rem 1rem 1rem;
+  text-align: center;
+}
+
+.table-column{
+  margin-left: 2rem;
 }
 
 .submission-panel,
