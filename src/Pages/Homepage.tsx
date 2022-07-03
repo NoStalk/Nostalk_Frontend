@@ -5,7 +5,7 @@ import { Text } from "@chakra-ui/react";
 import { Typography } from "antd";
 import { animate, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { type } from "os";
+
 
 const { Title } = Typography;
 

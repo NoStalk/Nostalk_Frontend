@@ -1,7 +1,7 @@
 
 
 
-export const data = [
+export const MockData = [
     {
         platform: 1,
         Name: 'codeforces',
@@ -64,34 +64,32 @@ export const data = [
     }
 ];
 
+
+
 export const Columns = [
     {
         Header: 'Platform',
-        accessor: 'platform',
+        accessor: 'platform' as const,
     },
     {
         Header: 'Name',
-        accessor: 'Name',
-    },
-    {
-        Header: 'url',
-        accessor: 'url',
+        accessor: 'Name' as const ,
     },
     {
         Header: 'Solved',
-        accessor: 'Solved',
+        accessor: 'Solved' as const,
     },
     {
         Header: 'Contest',
-        accessor: 'Contest',
+        accessor: 'Contest' as const,
     },
     {
         Header: 'Rating',
-        accessor: 'Rating',
+        accessor: 'Rating' as const,
     },
     {
         Header: 'Submissions',
-        accessor: 'Submissions',
+        accessor: 'Submissions' as const,
     }
 ];
 
