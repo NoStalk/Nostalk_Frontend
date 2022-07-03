@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../App.css'
-import '../styles/GlobalContestPage.css'
+import '../styles/ContestPageGlobal.css'
 import style from '../styles/ContestPage.module.css'
 import FullCalendar, { DateSpanApi, EventChangeArg, EventClickArg, MoreLinkAction, MoreLinkArg } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -20,6 +20,7 @@ type Event = {
 
 function Contests() {
 
+  //Dummy data 
   const exEvent: Event = {
     title: "Bi-weekly contest 80",
     publisher: 'geeksforgeeks.com',
@@ -30,6 +31,18 @@ function Contests() {
   let dummyEventArray: Event[] = [];
   dummyEventArray.push(exEvent, exEvent, exEvent, exEvent, exEvent, exEvent, exEvent, exEvent, exEvent, exEvent, exEvent);
   console.log(dummyEventArray)
+  const today = useRef(new Date())
+
+  useEffect(() => {
+    const button = document.querySelector('.fc-today-button')
+    if (button) {
+
+      button.addEventListener('click', () => {
+        setPaneDate(today.current)
+      })
+    }
+  }, [])
+
   const [events, setEvents] = useState<Event[]>(dummyEventArray)
 
   const [paneDate, setPaneDate] = useState<Date>(new Date());
@@ -65,11 +78,7 @@ function Contests() {
             height="90vh"
             plugins={[dayGridPlugin, interactionPlugin]}
             dayMaxEvents={true}
-            views={{
-              dayGrid: {
-                // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
-              },
-            }}
+
             headerToolbar={{
               start: '',
               center: 'title',

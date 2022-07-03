@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Event } from '../Pages/Contests';
 import { faExternalLinkSquare } from '@fortawesome/free-solid-svg-icons'
 
-//TODO get better svg
 
 import styles from "../styles/EventCard.module.css";
 
@@ -31,8 +30,8 @@ export default function EventCard({ event }: { event: Event }) {
             <div>
                 {event.title}
                 <br />
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <img src="/assets/earth.svg" height="20rem" />
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize:'0.8em'}}>
+                    <img src="/assets/earth.svg" height="18rem" />
                     <a href={"https://" + event.publisher} className={styles.publisherLink} target="__blank">
                         {event.publisher}
                     </a>
