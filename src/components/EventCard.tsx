@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Event } from '../Pages/Contests';
 import { faExternalLinkSquare } from '@fortawesome/free-solid-svg-icons'
 
-//TODO animate links
 //TODO get better svg
 
 import styles from "../styles/EventCard.module.css";

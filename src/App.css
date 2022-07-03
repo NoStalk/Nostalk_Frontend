@@ -4,17 +4,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 @import "../node_modules/@syncfusion/ej2-layouts/styles/material.css";
 @import "../node_modules/@syncfusion/ej2-react-grids/styles/material.css";
+
 :root {
-  --primary: #dcdee2;
+  --text: #dcdee2;
   font-family: "Open Sans", sans-serif;
   --secondary: #15161b;
   --ter: #4695bd;
+  --accent: #27293d;
+  --bg-color: #1e1e2f;
+
 }
+
 .e-grid {
-      color: var(--ter);
-      
-      border-radius: 25px;
-      font-family: "Open Sans";
+  color: var(--ter);
+
+  border-radius: 25px;
+  font-family: "Open Sans";
 }
 
 .App {
@@ -22,8 +27,8 @@
   flex-direction: row;
   width: 100%;
   height: fit-content;
-  background-color: #1e1e2f;
-  color: var(--primary);
+  background-color: var(--bg-color);
+  color: var(--text);
   overflow: auto;
 }
 
@@ -75,7 +80,7 @@ body {
 
 .link {
   display: flex;
-  color: var(--primary);
+  color: var(--text);
   justify-content: center;
   gap: 10px;
   border-right: 4px solid transparent;
@@ -86,16 +91,18 @@ body {
 }
 
 .link:hover {
-  border-right: 4px solid var(--primary);
+  border-right: 4px solid var(--text);
   transition: 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  background: /*#090A0A*/ #dcdee2;
+  background:
+    /*#090A0A*/
+    #dcdee2;
   align-items: center;
   text-decoration: none;
   color: #20232a;
 }
 
 .active {
-  border-right: 4px solid var(--primary);
+  border-right: 4px solid var(--text);
   background: #1e4db7;
 }
 
@@ -119,7 +126,7 @@ body {
 }
 
 .login-signup {
-  color: var(--primary);
+  color: var(--text);
   display: flex;
   width: auto;
   justify-content: right;
@@ -142,13 +149,14 @@ body {
   width: 100%;
   height: 100vh;
 }
+
 .homepage-first {
   background: url("../public/bgm1.svg");
   display: flex;
   height: 100%;
   flex-direction: column;
   width: 100%;
-  color: var(--primary);
+  color: var(--text);
 }
 
 .homepage-upperContainer {
@@ -163,17 +171,21 @@ body {
   .homepage {
     max-height: fit-content;
   }
+
   .herotext {
     margin-left: 7% !important;
     padding-top: 7% !important;
   }
+
   .homepage-lowerContainer {
     font-size: 2.5vw;
   }
+
   .homepage-second {
     flex-direction: column;
     flex-wrap: wrap;
   }
+
   .homepage-second-text {
     font-size: 2vw;
     margin-top: 15% !important;
@@ -210,7 +222,7 @@ body {
 .homepage-third-text,
 .homepage-fourth-text {
   font-family: "Courgette";
-  color: var(--primary);
+  color: var(--text);
   margin: 0% 0% 0% 5%;
 }
 
@@ -240,7 +252,7 @@ body {
   width: 100%;
   background-color: var(--secondary);
   min-height: 100vh;
-  color: var(--primary);
+  color: var(--text);
   overflow: hidden;
 }
 
@@ -287,7 +299,7 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: var(--primary);
+  color: var(--text);
   margin-bottom: 10px;
 }
 
@@ -344,7 +356,7 @@ form.sign-in-form {
   justify-content: center;
   align-items: center;
   margin: 0 0.45rem;
-  color: var(--primary);
+  color: var(--text);
   border-radius: 50%;
   border: 1px solid #333;
   text-decoration: none;
@@ -375,6 +387,7 @@ form.sign-in-form {
 .btn:hover {
   background-color: #4d84e2;
 }
+
 .panels-container {
   position: absolute;
   height: 100%;
@@ -504,6 +517,7 @@ form.sign-in-form {
     min-height: 800px;
     height: 100vh;
   }
+
   .signin-signup {
     width: 100%;
     top: 95%;
@@ -610,9 +624,11 @@ form.sign-in-form {
   .image {
     display: none;
   }
+
   .panel .content {
     padding: 0.5rem 1rem;
   }
+
   .container {
     padding: 1.5rem;
   }
@@ -637,6 +653,7 @@ form.sign-in-form {
   flex-direction: row;
   justify-content: center;
 }
+
 .profile-card-icons {
   width: 20%;
   height: 30%;
@@ -694,7 +711,7 @@ form.sign-in-form {
   margin-left: 1rem;
   border-radius: 25px;
   background-color: #27293d;
-  color: var(--primary);
+  color: var(--text);
 }
 
 table {
@@ -718,6 +735,7 @@ table {
   border-radius: 25px;
   margin-bottom: 2%;
 }
+
 /* 
 .contest-panel{
 

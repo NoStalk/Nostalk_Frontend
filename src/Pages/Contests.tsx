@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import '../App.css'
+import '../styles/GlobalContestPage.css'
 import style from '../styles/ContestPage.module.css'
-import FullCalendar, { DateSpanApi, EventChangeArg, EventClickArg } from '@fullcalendar/react'
+import FullCalendar, { DateSpanApi, EventChangeArg, EventClickArg, MoreLinkAction, MoreLinkArg } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction"
 import EventCard from '../components/EventCard'
+
+//TODO highlight when specific event is clicked
 
 type Event = {
   title: string,
@@ -34,6 +37,7 @@ function Contests() {
 
 
   const handleDateClick = (arg: DateClickArg) => { setPaneDate(arg.date); }
+
   const handleEventClick = (arg: EventClickArg) => {
     if (arg.event.start) {
       setPaneDate(arg.event.start);
@@ -42,6 +46,8 @@ function Contests() {
       console.error("Event object passed to handleEventClick does not have a start date!")
     }
   }
+
+  const moreEventLinkClick = (arg: MoreLinkArg) => { console.log("clicked"); setPaneDate(arg.date); }
 
   const rejectRangeSelections = (selectInfo: DateSpanApi): boolean => {
     const startDay = selectInfo.start.getUTCDay();
@@ -74,6 +80,8 @@ function Contests() {
             selectAllow={rejectRangeSelections}
             dateClick={handleDateClick}
             eventClick={handleEventClick}
+            moreLinkClick={moreEventLinkClick}
+            moreLinkClassNames={style.eventPopover}
 
             events={events}
             eventTimeFormat={{
@@ -90,12 +98,14 @@ function Contests() {
           <div className={style.paneDateDiv}>
             {paneDate.toLocaleDateString('en-in', { weekday: "long", year: "numeric", month: "numeric", day: "numeric" })}
           </div>
-          {events.filter(event => {
-            return event.start.getFullYear() === paneDate.getFullYear() &&
-              event.start.getMonth() === paneDate.getMonth() &&
-              event.start.getDate() === paneDate.getDate()
-          })
-            .map(event => <EventCard event={event} />)}
+          <div style={{ width: '100%', overflowY: "scroll" }}>
+            {events.filter(event => {
+              return event.start.getFullYear() === paneDate.getFullYear() &&
+                event.start.getMonth() === paneDate.getMonth() &&
+                event.start.getDate() === paneDate.getDate()
+            })
+              .map(event => <EventCard event={event} />)}
+          </div>
         </div>
       </div>
     </div >
