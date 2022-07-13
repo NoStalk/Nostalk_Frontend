@@ -10,8 +10,16 @@ import {
   FaLock,
   FaEnvelope,
 } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Login = () => {
+
+  const [, , login] = useAuth();
+
+  const navigate = useNavigate();
+  const location: any = useLocation();
+  const from: string = location.state?.from?.pathname || "/";
 
 
 
@@ -41,6 +49,14 @@ const Login = () => {
     }
   }, [])
 
+  function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+    //TODO handle login logic
+    event.preventDefault();
+    //On success
+    navigate(from, { replace: true });
+    login({ name: "Ronak" });
+  }
+
 
 
 
@@ -50,7 +66,7 @@ const Login = () => {
     <div className="container">
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="#" className="sign-in-form">
+          <form onSubmit={handleLogin} className="sign-in-form">
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user">

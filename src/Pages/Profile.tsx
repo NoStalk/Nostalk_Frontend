@@ -6,6 +6,10 @@ import { Button } from "@mui/material";
 import { Columns, MockData } from "./../data/websitedata";
 import { useTable } from "react-table";
 import DoughnutChart from "./../components/DoughnutChart";
+import { useAppDispatch } from "../hooks/reduxHooks";
+import { logOutUser } from "../features/userDataSlice";
+import { Navigate, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Profile = () => {
   type rowdata = {
@@ -28,6 +32,10 @@ const Profile = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
 
+  const [, , , logout] = useAuth();
+  const navigate = useNavigate();
+
+
   return (
     <div className="profile">
       <div className="top-panel">
@@ -43,7 +51,14 @@ const Profile = () => {
         >
           <Avatar alt="Remy Sharp" src="./logo192.png" />
           <h3 style={{ margin: "0.5rem 3rem 0rem 1rem" }}>HI, ZEUS</h3>
-          <Button variant="outlined" color="error">
+          <Button onClick={() => {
+
+            logout();
+            navigate("/");
+
+          }}
+            variant="outlined"
+            color="error">
             Logout
           </Button>
         </div>
