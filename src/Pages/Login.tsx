@@ -35,6 +35,7 @@ const Login = () => {
 
 
   useEffect(() => {
+    axios.defaults.withCredentials = true; axios.defaults.withCredentials = true;
     const sign_in_btn = document.querySelector("#sign-in-btn");
     const sign_up_btn = document.querySelector("#sign-up-btn");
     const container = document.querySelector(".container");
@@ -60,6 +61,28 @@ const Login = () => {
     }
   }, [])
 
+  /**
+   * @param email 
+   * @param password 
+   * Utility function that logs in user with provided email and password
+   * Does not check if email and password are valid!
+   */
+  const loginWithCredentials = async (email: string, password: string) => {
+    try {
+
+      const userDataResponse = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + '/login', {
+        email,
+        password
+      }, { withCredentials: true })
+      navigate(from, { replace: true });
+      logIn(userDataResponse.data)
+      navigate(from, { replace: true });
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
+
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     /**
@@ -84,28 +107,12 @@ const Login = () => {
       console.error(new Error('User already logged in?'));
       return;
     }
-
-    try {
-
-      const userDataResponse = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + '/login', {
-        email: emailLoginField.current.value,
-        password: passwordLoginField.current.value
-      },
-        {
-          withCredentials: true,
-        }
-      )
-      navigate(from, { replace: true });
-      logIn(userDataResponse.data)
-      navigate(from, { replace: true });
-    }
-    catch (error) {
-      console.error(error)
-    }
+    loginWithCredentials(emailLoginField.current.value, passwordLoginField.current.value);
   }
 
   function handleSignUp(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    console.log('Sign up triggered');
 
     if (!process.env.REACT_APP_BACKEND_URL) {
       console.error(new Error('REACT_APP_BACKEND_URL enviroment variable not set'))
@@ -136,15 +143,23 @@ const Login = () => {
       //TODO show visual feedback
 
       console.error(new Error('Passwords do not match'));
+      return;
     }
 
-    axios.post(process.env.REACT_APP_BACKEND_URL + '/register', {
-      email: emailSignUpField.current.value,
-      firstName: firstNameSignUpField.current.value,
-      lastName: lastNameSignUpField.current.value,
-      password: passwordSignUpField.current.value
-    })
-    console.log('User registered')
+    try {
+
+      axios.post(process.env.REACT_APP_BACKEND_URL + '/register', {
+        email: emailSignUpField.current.value,
+        firstName: firstNameSignUpField.current.value,
+        lastName: lastNameSignUpField.current.value,
+        password: passwordSignUpField.current.value
+      })
+
+      loginWithCredentials(emailSignUpField.current.value, passwordSignUpField.current.value);
+    }
+    catch (error) {
+      console.error(error);
+    }
 
   }
 
