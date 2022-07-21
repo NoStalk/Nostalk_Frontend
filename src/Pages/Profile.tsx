@@ -12,6 +12,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Profile = () => {
+
+  const user = useAuth();
   type rowdata = {
     platform: number;
     Name: string;
@@ -32,7 +34,7 @@ const Profile = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
 
-  const [, , , logout] = useAuth();
+  // const [, , , logout] = useAuth();
   const navigate = useNavigate();
 
 
@@ -50,10 +52,9 @@ const Profile = () => {
           }}
         >
           <Avatar alt="Remy Sharp" src="./logo192.png" />
-          <h3 style={{ margin: "0.5rem 3rem 0rem 1rem" }}>HI, ZEUS</h3>
+          <h3 style={{ margin: "0.5rem 3rem 0rem 1rem" }}>HI, {user.firstName}</h3>
           <Button onClick={() => {
-
-            logout();
+            user.logOut();
             navigate("/");
 
           }}

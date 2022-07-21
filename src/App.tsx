@@ -5,16 +5,35 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AccountInfo, Contests, Friends, Homepage, Leaderboard, Profile, Submissions, Login, Signup } from "./Pages";
 
 import { useAppDispatch, useAppSelector } from './hooks/reduxHooks'
-import { logInUser } from './features/userDataSlice'
+import { logInUser, userData } from './features/userDataSlice'
 import AuthRequired from './components/AuthRequired';
 import useAuth from './hooks/useAuth';
+import axios from 'axios';
 
 
 function App() {
 
-  const [isLoggedIn] = useAuth();
+  const { isLoggedIn, logIn } = useAuth();
 
+  useEffect(() => {
+    if (!process.env.REACT_APP_BACKEND_URL) {
+      console.error(new Error('REACT_APP_BACKEND_URL enviroment variable not set'))
+      return;
+    }
+    if (isLoggedIn) {
+      return;
+    }
+    try {
 
+      axios.get<userData>(process.env.REACT_APP_BACKEND_URL + '/refresh', { withCredentials: true })
+        .then(response => {
+          logIn(response.data);
+        })
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }, [])
 
   return (
     <div className="App" >
