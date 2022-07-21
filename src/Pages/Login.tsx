@@ -90,7 +90,11 @@ const Login = () => {
       const userDataResponse = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + '/login', {
         email: emailLoginField.current.value,
         password: passwordLoginField.current.value
-      })
+      },
+        {
+          withCredentials: true,
+        }
+      )
       navigate(from, { replace: true });
       logIn(userDataResponse.data)
       navigate(from, { replace: true });
