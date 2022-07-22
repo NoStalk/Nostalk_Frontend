@@ -186,7 +186,10 @@ const Login = () => {
         <div className="signin-signup">
           <form onSubmit={handleLogin} className="sign-in-form">
             <h2 className="title">Sign in</h2>
-            <span className="loginError" style={{ color: "red", display: "none" }}>
+            <span
+              className="loginError"
+              style={{ color: "red", display: "none" }}
+            >
               Invalid Email or Password!
             </span>
             <div className="input-field">
@@ -212,10 +215,10 @@ const Login = () => {
                 <FaGoogle />
               </a>
               <a href="#" className="social-icon">
-                <FaLinkedinIn />
+                <FaGithub />
               </a>
               <a href="#" className="social-icon">
-                <FaGithub />
+                <FaLinkedinIn />
               </a>
             </div>
           </form>
