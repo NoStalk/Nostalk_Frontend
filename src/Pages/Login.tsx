@@ -79,6 +79,9 @@ const Login = () => {
       navigate(from, { replace: true });
     } catch (error) {
       console.error(error);
+      const loginError = document.querySelector<HTMLElement>(".loginError");
+      if (loginError)
+        loginError.style.display="block";
     }
   };
 
@@ -150,8 +153,10 @@ const Login = () => {
       confirmPasswordSignUpField.current.value
     ) {
       //TODO show visual feedback
-      const passwordDiv = document.querySelector<HTMLElement>(".confirmPasswordError");
-      if (passwordDiv) { 
+      const passwordDiv = document.querySelector<HTMLElement>(
+        ".confirmPasswordError"
+      );
+      if (passwordDiv) {
         passwordDiv.style.display = "block";
       }
       console.error(new Error("Passwords do not match"));
@@ -181,6 +186,9 @@ const Login = () => {
         <div className="signin-signup">
           <form onSubmit={handleLogin} className="sign-in-form">
             <h2 className="title">Sign in</h2>
+            <span className="loginError" style={{ color: "red", display: "none" }}>
+              Invalid Email or Password!
+            </span>
             <div className="input-field">
               <i className="fas fa-user">
                 <FaUser style={{ color: "#121212" }} />
