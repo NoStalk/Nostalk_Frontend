@@ -10,6 +10,7 @@ import {
   FaUser,
   FaLock,
   FaEnvelope,
+  FaGithub,
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -200,30 +201,37 @@ const Login = () => {
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
-                <FaFacebookF />
-              </a>
-              <a href="#" className="social-icon">
-                <FaTwitter />
-              </a>
-              <a href="#" className="social-icon">
                 <FaGoogle />
               </a>
               <a href="#" className="social-icon">
                 <FaLinkedinIn />
+              </a>
+              <a href="#" className="social-icon">
+                <FaGithub />
               </a>
             </div>
           </form>
           <form className="sign-up-form" onSubmit={handleSignUp}>
             <h2 className="title">Sign up</h2>
             <div>
-              <p className="confirmPasswordError" style={{ color: "red", display: "none" }}>
+              <p
+                className="confirmPasswordError"
+                style={{ color: "red", display: "none" }}
+              >
                 The passwords do no match
               </p>
-              <span className="passwordError" style={{ color: "red", display: "none" }}>
-                Password should be atleast 8 characters long and have an UpperCase
-                character, a LowerCase character, a digit and a special character!
+              <span
+                className="passwordError"
+                style={{ color: "red", display: "none" }}
+              >
+                Password should be atleast 8 characters long and have an
+                UpperCase character, a LowerCase character, a digit and a
+                special character!
               </span>
-              <span className="emailError" style={{ color: "red", display: "none" }}>
+              <span
+                className="emailError"
+                style={{ color: "red", display: "none" }}
+              >
                 Email is not valid
               </span>
             </div>
