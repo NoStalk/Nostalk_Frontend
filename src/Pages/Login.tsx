@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "../App.css";
 import { useEffect } from "react";
-import axios from 'axios'
+import axios from "axios";
 import {
   FaFacebookF,
   FaTwitter,
@@ -12,12 +12,11 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Password from "antd/lib/input/Password";
 import { userData } from "../features/userDataSlice";
 
 const Login = () => {
-
   const { logIn } = useAuth();
   const userData = useAuth();
 
@@ -33,9 +32,9 @@ const Login = () => {
   const passwordSignUpField = useRef<HTMLInputElement>(null);
   const confirmPasswordSignUpField = useRef<HTMLInputElement>(null);
 
-
   useEffect(() => {
-    axios.defaults.withCredentials = true; axios.defaults.withCredentials = true;
+    axios.defaults.withCredentials = true;
+    axios.defaults.withCredentials = true;
     const sign_in_btn = document.querySelector("#sign-in-btn");
     const sign_up_btn = document.querySelector("#sign-up-btn");
     const container = document.querySelector(".container");
@@ -48,40 +47,39 @@ const Login = () => {
       });
 
       return () => {
-
         sign_up_btn.removeEventListener("click", () => {
           if (container !== null) container.classList.add("sign-up-mode");
-        })
+        });
         sign_in_btn.removeEventListener("click", () => {
           if (container !== null) container.classList.remove("sign-up-mode");
-        })
-
-      }
-
+        });
+      };
     }
-  }, [])
+  }, []);
 
   /**
-   * @param email 
-   * @param password 
+   * @param email
+   * @param password
    * Utility function that logs in user with provided email and password
    * Does not check if email and password are valid!
    */
   const loginWithCredentials = async (email: string, password: string) => {
     try {
-
-      const userDataResponse = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + '/login', {
-        email,
-        password
-      }, { withCredentials: true })
+      const userDataResponse = await axios.post<userData>(
+        process.env.REACT_APP_BACKEND_URL + "/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
       navigate(from, { replace: true });
-      logIn(userDataResponse.data)
+      logIn(userDataResponse.data);
       navigate(from, { replace: true });
+    } catch (error) {
+      console.error(error);
     }
-    catch (error) {
-      console.error(error)
-    }
-  }
+  };
 
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -91,82 +89,90 @@ const Login = () => {
      * Then if no error we finally store the recieved userData
      */
     if (!process.env.REACT_APP_BACKEND_URL) {
-      console.error(new Error('REACT_APP_BACKEND_URL enviroment variable not set'))
+      console.error(
+        new Error("REACT_APP_BACKEND_URL enviroment variable not set")
+      );
       return;
     }
     if (!emailLoginField.current) {
-      console.error(new Error('E-mail field refernce null'))
+      console.error(new Error("E-mail field refernce null"));
       return;
     }
 
     if (!passwordLoginField.current) {
-      console.error(new Error('Password field refernce null'));
+      console.error(new Error("Password field refernce null"));
       return;
     }
     if (userData.isLoggedIn) {
-      console.error(new Error('User already logged in?'));
+      console.error(new Error("User already logged in?"));
       return;
     }
-    loginWithCredentials(emailLoginField.current.value, passwordLoginField.current.value);
+    loginWithCredentials(
+      emailLoginField.current.value,
+      passwordLoginField.current.value
+    );
   }
 
   function handleSignUp(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log('Sign up triggered');
+    console.log("Sign up triggered");
 
     if (!process.env.REACT_APP_BACKEND_URL) {
-      console.error(new Error('REACT_APP_BACKEND_URL enviroment variable not set'))
+      console.error(
+        new Error("REACT_APP_BACKEND_URL enviroment variable not set")
+      );
       return;
     }
     if (!emailSignUpField.current) {
-      console.error(new Error('E-mail field refernce null'))
+      console.error(new Error("E-mail field reference null"));
       return;
     }
     if (!firstNameSignUpField.current) {
-      console.error(new Error('First name field refernce null'))
+      console.error(new Error("First name field reference null"));
       return;
     }
     if (!lastNameSignUpField.current) {
-      console.error(new Error('Last name field refernce null'))
+      console.error(new Error("Last name field reference null"));
       return;
     }
     if (!passwordSignUpField.current) {
-      console.error(new Error('Password field refernce null'));
+      console.error(new Error("Password field reference null"));
       return;
     }
     if (!confirmPasswordSignUpField.current) {
-      console.error(new Error('Password field refernce null'));
+      console.error(new Error("Password field reference null"));
       return;
     }
 
-    if (passwordSignUpField.current.value !== confirmPasswordSignUpField.current.value) {
+    if (
+      passwordSignUpField.current.value !==
+      confirmPasswordSignUpField.current.value
+    ) {
       //TODO show visual feedback
-
-      console.error(new Error('Passwords do not match'));
+      const passwordDiv = document.querySelector<HTMLElement>(".confirmPasswordError");
+      if (passwordDiv) { 
+        passwordDiv.style.display = "block";
+      }
+      console.error(new Error("Passwords do not match"));
       return;
     }
 
     try {
-
-      axios.post(process.env.REACT_APP_BACKEND_URL + '/register', {
+      axios.post(process.env.REACT_APP_BACKEND_URL + "/register", {
         email: emailSignUpField.current.value,
         firstName: firstNameSignUpField.current.value,
         lastName: lastNameSignUpField.current.value,
-        password: passwordSignUpField.current.value
-      })
+        password: passwordSignUpField.current.value,
+      });
 
-      loginWithCredentials(emailSignUpField.current.value, passwordSignUpField.current.value);
-    }
-    catch (error) {
+      loginWithCredentials(
+        emailSignUpField.current.value,
+        passwordSignUpField.current.value
+      );
+    } catch (error) {
       console.error(error);
     }
-
   }
-
-
-
-
-
 
   return (
     <div className="container">
@@ -184,7 +190,11 @@ const Login = () => {
               <i className="fas fa-lock">
                 <FaLock style={{ color: "#121212" }} />
               </i>
-              <input type="password" placeholder="Password" ref={passwordLoginField} />
+              <input
+                type="password"
+                placeholder="Password"
+                ref={passwordLoginField}
+              />
             </div>
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
@@ -205,56 +215,74 @@ const Login = () => {
           </form>
           <form className="sign-up-form" onSubmit={handleSignUp}>
             <h2 className="title">Sign up</h2>
+            <div>
+              <p className="confirmPasswordError" style={{ color: "red", display: "none" }}>
+                The passwords do no match
+              </p>
+              <span className="passwordError" style={{ color: "red", display: "none" }}>
+                Password should be atleast 8 characters long and have an UpperCase
+                character, a LowerCase character, a digit and a special character!
+              </span>
+              <span className="emailError" style={{ color: "red", display: "none" }}>
+                Email is not valid
+              </span>
+            </div>
             <div className="input-field">
               <i className="fas fa-user">
                 <FaEnvelope style={{ color: "#121212" }} />
               </i>
-              <input type="email" placeholder="E-mail" ref={emailSignUpField} required />
+              <input
+                type="email"
+                placeholder="E-mail"
+                ref={emailSignUpField}
+                required
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-envelope">
                 <FaUser style={{ color: "#121212" }} />
               </i>
-              <input type="text" placeholder="First Name" ref={firstNameSignUpField} required />
+              <input
+                type="text"
+                placeholder="First Name"
+                ref={firstNameSignUpField}
+                required
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-envelope">
                 <FaUser style={{ color: "#121212" }} />
               </i>
-              <input type="text" placeholder="Last Name" ref={lastNameSignUpField} />
+              <input
+                type="text"
+                placeholder="Last Name"
+                ref={lastNameSignUpField}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock">
                 <FaLock style={{ color: "#121212" }} />
               </i>
-              <input type="password" placeholder="Password" ref={passwordSignUpField} required />
+              <input
+                type="password"
+                placeholder="Password"
+                ref={passwordSignUpField}
+                required
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock">
                 <FaLock style={{ color: "#121212" }} />
               </i>
 
-              <input type="password" placeholder="Confirm Password" ref={confirmPasswordSignUpField} required />
-              <p>Hello</p>
-
-
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                ref={confirmPasswordSignUpField}
+                required
+              />
             </div>
             <input type="submit" className="btn" value="Sign up" />
-            <p className="social-text">Or Sign up with social platforms</p>
-            <div className="social-media">
-              <a href="#" className="social-icon">
-                <FaFacebookF />
-              </a>
-              <a href="#" className="social-icon">
-                <FaTwitter />
-              </a>
-              <a href="#" className="social-icon">
-                <FaGoogle />
-              </a>
-              <a href="#" className="social-icon">
-                <FaLinkedinIn />
-              </a>
-            </div>
           </form>
         </div>
       </div>
