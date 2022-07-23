@@ -37,7 +37,6 @@ const Login = () => {
         const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/google", {
           accessToken: tokenResponse.access_token,
         });
-        debugger;
         logIn(response.data);
       }
       catch (error) {
