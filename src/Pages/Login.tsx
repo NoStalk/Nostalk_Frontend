@@ -3,8 +3,6 @@ import "../App.css";
 import { useEffect } from "react";
 import axios from "axios";
 import {
-  FaFacebookF,
-  FaTwitter,
   FaGoogle,
   FaLinkedinIn,
   FaUser,
@@ -13,15 +11,14 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import Password from "antd/lib/input/Password";
 import { userData } from "../features/userDataSlice";
+import { useGoogleLogin } from '@react-oauth/google';
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
   const { logIn } = useAuth();
   const userData = useAuth();
 
-  const navigate = useNavigate();
   const location: any = useLocation();
   const from: string = location.state?.from?.pathname || "/";
 
@@ -33,9 +30,25 @@ const Login = () => {
   const passwordSignUpField = useRef<HTMLInputElement>(null);
   const confirmPasswordSignUpField = useRef<HTMLInputElement>(null);
 
+  const login = useGoogleLogin({
+    onSuccess: async tokenResponse => {
+      try {
+        console.log(tokenResponse);
+        const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/google", {
+          accessToken: tokenResponse.access_token,
+        });
+        debugger;
+        logIn(response.data);
+      }
+      catch (error) {
+        console.error(error);
+      }
+    },
+  });
+
+
   useEffect(() => {
-    axios.defaults.withCredentials = true;
-    axios.defaults.withCredentials = true;
+
     const sign_in_btn = document.querySelector("#sign-in-btn");
     const sign_up_btn = document.querySelector("#sign-up-btn");
     const container = document.querySelector(".container");
@@ -74,14 +87,12 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      navigate(from, { replace: true });
       logIn(userDataResponse.data);
-      navigate(from, { replace: true });
     } catch (error) {
       console.error(error);
       const loginError = document.querySelector<HTMLElement>(".loginError");
       if (loginError)
-        loginError.style.display="block";
+        loginError.style.display = "block";
     }
   };
 
@@ -208,7 +219,7 @@ const Login = () => {
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              <a href="#" className="social-icon">
+              <a className="social-icon" onClick={() => login()}>
                 <FaGoogle />
               </a>
               <a href="#" className="social-icon">
@@ -301,7 +312,7 @@ const Login = () => {
             <input type="submit" className="btn" value="Sign up" />
           </form>
         </div>
-      </div>
+      </div >
 
       <div className="panels-container">
         <div className="panel left-panel">
@@ -336,7 +347,7 @@ const Login = () => {
           />
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

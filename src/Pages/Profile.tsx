@@ -34,8 +34,6 @@ const Profile = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
 
-  // const [, , , logout] = useAuth();
-  const navigate = useNavigate();
 
 
   return (
@@ -55,7 +53,7 @@ const Profile = () => {
           <h3 style={{ margin: "0.5rem 3rem 0rem 1rem" }}>HI, {user.firstName}</h3>
           <Button onClick={() => {
             user.logOut();
-            navigate("/");
+
 
           }}
             variant="outlined"
