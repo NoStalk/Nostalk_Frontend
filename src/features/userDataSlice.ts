@@ -12,10 +12,12 @@ export interface userData {
  * @member isLoggedIn If a valid user is logged in, if set to false all other values are garbage and MUST not be used
  */
 export interface userSliceData extends userData {
+    hasLoaded: boolean;
     isLoggedIn: boolean;
 }
 
 const initialState: userSliceData = {
+    hasLoaded: false,
     isLoggedIn: false,
     email: '',
     firstName: '',
@@ -28,6 +30,7 @@ const userDataSlice = createSlice({
     reducers: {
         logInUser(state, actions: PayloadAction<userData>) {
             return {
+                hasLoaded: true,
                 isLoggedIn: true,
                 ...actions.payload
             }
