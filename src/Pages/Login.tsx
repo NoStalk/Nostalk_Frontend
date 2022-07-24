@@ -34,7 +34,10 @@ const Login = () => {
   const passwordSignUpField = useRef<HTMLInputElement>(null);
   const confirmPasswordSignUpField = useRef<HTMLInputElement>(null);
 
-  const login = useGoogleLogin({
+
+
+
+  const googleLogin = useGoogleLogin({
     onSuccess: async tokenResponse => {
       try {
         const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/google", {
@@ -47,6 +50,22 @@ const Login = () => {
       }
     },
   });
+
+  //Check this incase of undefined behaviour in the future
+ const { linkedInLogin } = useLinkedIn({
+   clientId: "86283tgqe4lq41",
+   redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+   onSuccess: async code => {
+     const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/linkedin", {
+       authorizationToken: code,
+     }, { withCredentials: true });
+      userData.logIn(response.data, from);
+   },
+   scope: "r_emailaddress r_liteprofile",
+   onError: (error) => {
+     console.error(error);
+   },
+ });
 
 
   useEffect(() => {
@@ -225,13 +244,13 @@ const Login = () => {
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              <a className="social-icon" onClick={() => login()}>
+              <a className="social-icon" onClick={() => googleLogin()}>
                 <FaGoogle />
               </a>
               <a href="#" className="social-icon">
                 <FaGithub />
               </a>
-              <a href="#" className="social-icon">
+              <a className="social-icon" onClick={()=> linkedInLogin()}>
                 <FaLinkedinIn />
               </a>
             </div>
