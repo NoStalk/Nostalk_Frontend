@@ -17,10 +17,11 @@ import { useLocation } from "react-router-dom";
 import { useLinkedIn } from "react-linkedin-login-oauth2";
 import linkedin from "react-linkedin-login-oauth2/assets/linkedin.png";
 
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { logIn } = useAuth();
   const userData = useAuth();
+  const navigate = useNavigate();
 
   const location: any = useLocation();
   const from: string = location.state?.from?.pathname || "/";
@@ -36,11 +37,10 @@ const Login = () => {
   const login = useGoogleLogin({
     onSuccess: async tokenResponse => {
       try {
-        console.log(tokenResponse);
         const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/google", {
           accessToken: tokenResponse.access_token,
-        });
-        logIn(response.data);
+        }, { withCredentials: true });
+        userData.logIn(response.data, from);
       }
       catch (error) {
         console.error(error);
@@ -50,6 +50,8 @@ const Login = () => {
 
 
   useEffect(() => {
+    console.log(from)
+    if (userData.isLoggedIn && from !== "/" || undefined) navigate(from);
 
     const sign_in_btn = document.querySelector("#sign-in-btn");
     const sign_up_btn = document.querySelector("#sign-up-btn");
@@ -89,7 +91,7 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      logIn(userDataResponse.data);
+      userData.logIn(userDataResponse.data, from);
     } catch (error) {
       console.error(error);
       const loginError = document.querySelector<HTMLElement>(".loginError");
@@ -132,7 +134,6 @@ const Login = () => {
 
   function handleSignUp(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("Sign up triggered");
 
     if (!process.env.REACT_APP_BACKEND_URL) {
       console.error(

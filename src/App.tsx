@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import "./App.css";
 import SideBar from './Pages/SideBar';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AccountInfo, Contests, Friends, Homepage, Leaderboard, Profile, Submissions, Login, Signup } from "./Pages";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AccountInfo, Contests, Friends, Homepage, Leaderboard, Profile, Submissions, Login } from "./Pages";
 
-import { useAppDispatch, useAppSelector } from './hooks/reduxHooks'
-import { logInUser, userData } from './features/userDataSlice'
+import { userData } from './features/userDataSlice'
 import AuthRequired from './components/AuthRequired';
 import useAuth from './hooks/useAuth';
 import axios from 'axios';
@@ -14,6 +13,9 @@ import axios from 'axios';
 function App() {
 
   const { isLoggedIn, logIn } = useAuth();
+
+  const location: any = useLocation();
+  const from: string = location.state?.from?.pathname;
 
   useEffect(() => {
     if (!process.env.REACT_APP_BACKEND_URL) {
@@ -27,7 +29,8 @@ function App() {
 
       axios.get<userData>(process.env.REACT_APP_BACKEND_URL + '/refresh', { withCredentials: true })
         .then(response => {
-          logIn(response.data);
+          console.log(from);
+          logIn(response.data, from);
         })
     }
     catch (error) {

@@ -12,7 +12,7 @@ const DoughnutChart = () => {
   ChartJS.defaults.font.family = "Open Sans";
   const dataArray = data.datasets[0].data;
   const totalValue = dataArray.reduce((a, b) => a + b, 0);
-  console.log(totalValue);
+  // console.log(totalValue);
   const options = {
     cutout: 130,
     elements: {

@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "./reduxHooks";
 import { logInUser, logOutUser, userData, userSliceData } from "../features/userDataSlice";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 /** 
  * @property isLoggedin: boolean -> weather the current user is logged in, if false all other props are set to default value(garbage).
@@ -27,10 +28,25 @@ const useAuth = (): userDataHookInterface => {
         dispatch(logInUser(userData));
         navigate(from, { replace: true });
     }
+
     const logOut = () => {
-        dispatch(logOutUser());
-        navigate('/');
+        if (!process.env.REACT_APP_BACKEND_URL) {
+            console.error("No backend url set in enviroment variables");
+            return;
+        }
+
+        try {
+            axios.get(process.env.REACT_APP_BACKEND_URL + '/logout',
+                { withCredentials: true });
+            dispatch(logOutUser());
+            navigate('/');
+        }
+        catch (error) {
+            console.error(error);
+        }
     }
+
+
 
     const userHookData: userDataHookInterface = {
         ...userData,
