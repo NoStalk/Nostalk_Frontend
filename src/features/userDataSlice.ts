@@ -28,7 +28,7 @@ const userDataSlice = createSlice({
     name: 'userData',
     initialState,
     reducers: {
-        logInUser(state, actions: PayloadAction<userData>) {
+        logInUser(_, actions: PayloadAction<userData>) {
             return {
                 hasLoaded: true,
                 isLoggedIn: true,
@@ -37,11 +37,17 @@ const userDataSlice = createSlice({
         },
 
         logOutUser(state) {
-            return initialState
+            state.isLoggedIn = false;
+        },
+
+        setHasLoaded() {
+            const obj = { ...initialState };
+            obj.hasLoaded = true;
+            return obj;
         }
 
     }
 })
 
-export const { logInUser, logOutUser } = userDataSlice.actions;
+export const { logInUser, logOutUser, setHasLoaded } = userDataSlice.actions;
 export default userDataSlice.reducer;

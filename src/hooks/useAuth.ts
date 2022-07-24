@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "./reduxHooks";
-import { logInUser, logOutUser, userData, userSliceData } from "../features/userDataSlice";
+import { logInUser, logOutUser, userData, userSliceData, setHasLoaded } from "../features/userDataSlice";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -14,6 +14,7 @@ import axios from "axios";
 interface userDataHookInterface extends userSliceData {
     logIn: (userData: userData, from?: string) => void,
     logOut: () => void
+    setLoaded: () => void
 }
 
 const useAuth = (): userDataHookInterface => {
@@ -25,6 +26,7 @@ const useAuth = (): userDataHookInterface => {
 
 
     const logIn = (userData: userData, from: string = '/') => {
+        console.log('logIn:', from);
         dispatch(logInUser(userData));
         navigate(from, { replace: true });
     }
@@ -46,12 +48,17 @@ const useAuth = (): userDataHookInterface => {
         }
     }
 
+    const setLoaded = () => {
+        dispatch(setHasLoaded());
+    }
+
 
 
     const userHookData: userDataHookInterface = {
         ...userData,
         logIn,
-        logOut
+        logOut,
+        setLoaded
     }
 
     return userHookData;
