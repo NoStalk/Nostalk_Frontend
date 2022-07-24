@@ -14,6 +14,9 @@ import useAuth from "../hooks/useAuth";
 import { userData } from "../features/userDataSlice";
 import { useGoogleLogin } from '@react-oauth/google';
 import { useLocation } from "react-router-dom";
+import { useLinkedIn } from "react-linkedin-login-oauth2";
+import linkedin from "react-linkedin-login-oauth2/assets/linkedin.png";
+
 
 const Login = () => {
   const { logIn } = useAuth();
