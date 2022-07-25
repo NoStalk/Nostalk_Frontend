@@ -2,6 +2,7 @@ import { useLocation, Navigate, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { userData } from "../features/userDataSlice";
+import { InfinitySpin } from "react-loader-spinner";
 
 const AuthRequired =  (props: any) => {
     const user = useAuth();
@@ -18,7 +19,18 @@ const AuthRequired =  (props: any) => {
                 console.error(error);
                 user.setLoaded();
             });
-        return <div>Loading...</div>
+        return (
+          <div
+            style={{
+              display: "grid",
+              placeItems: "center",
+              width: "100vw",
+              height: "100vh",
+            }}
+          >
+            <InfinitySpin width="200" color="#4fa94d" />
+          </div>
+        );
     }
     else if (user.isLoggedIn || location.pathname === "/login" || location.pathname === "/") {
         console.log("showing outlet");

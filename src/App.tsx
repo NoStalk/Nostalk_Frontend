@@ -14,6 +14,7 @@ import {
 import AuthRequired from "./components/AuthRequired";
 import useAuth from "./hooks/useAuth";
 import { LinkedInCallback } from "react-linkedin-login-oauth2";
+import CallBack from "./components/CallBack";
 
 function App() {
   const user = useAuth();
@@ -24,6 +25,7 @@ function App() {
 
       <Routes>
         <Route path="/linkedin" element={<LinkedInCallback />} />
+        <Route path="/callback" element={<CallBack />} />
         <Route element={<AuthRequired />}>
           <Route path="/" element={<Homepage isLoggedIn={user.isLoggedIn} />} />
           <Route path="/login" element={<Login />} />

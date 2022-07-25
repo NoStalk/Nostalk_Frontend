@@ -53,7 +53,7 @@ const Login = () => {
 
   //Check this incase of undefined behaviour in the future
  const { linkedInLogin } = useLinkedIn({
-   clientId: "86283tgqe4lq41",
+   clientId: `${process.env.REACT_APP_LINKEDIN_CLIENT_ID}`,
    redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
    onSuccess: async code => {
      const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/linkedin", {
@@ -66,6 +66,14 @@ const Login = () => {
      console.error(error);
    },
  });
+  
+  const githubLogin = () => {
+    axios.get(process.env.REACT_APP_BACKEND_URL + "/oauth/github", {
+      withCredentials: true, params: {
+        redirect_uri: from,
+      }
+    });
+  }
 
 
   useEffect(() => {
@@ -247,10 +255,13 @@ const Login = () => {
               <a className="social-icon" onClick={() => googleLogin()}>
                 <FaGoogle />
               </a>
-              <a href="#" className="social-icon">
+              <a
+                href={`https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BACKEND_URL}/oauth/github?path=${from}&scope=user:email`}
+                className="social-icon"
+              >
                 <FaGithub />
               </a>
-              <a className="social-icon" onClick={()=> linkedInLogin()}>
+              <a className="social-icon" onClick={() => linkedInLogin()}>
                 <FaLinkedinIn />
               </a>
             </div>
@@ -337,7 +348,7 @@ const Login = () => {
             <input type="submit" className="btn" value="Sign up" />
           </form>
         </div>
-      </div >
+      </div>
 
       <div className="panels-container">
         <div className="panel left-panel">
@@ -372,7 +383,7 @@ const Login = () => {
           />
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
