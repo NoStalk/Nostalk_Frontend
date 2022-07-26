@@ -12,7 +12,6 @@ import {
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import { userData } from "../features/userDataSlice";
-import { useGoogleLogin } from '@react-oauth/google';
 import { useLocation } from "react-router-dom";
 import { useLinkedIn } from "react-linkedin-login-oauth2";
 import linkedin from "react-linkedin-login-oauth2/assets/linkedin.png";
@@ -37,36 +36,23 @@ const Login = () => {
 
 
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: async tokenResponse => {
-      try {
-        const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/google", {
-          accessToken: tokenResponse.access_token,
-        }, { withCredentials: true });
-        userData.logIn(response.data, from);
-      }
-      catch (error) {
-        console.error(error);
-      }
+
+  //Check this incase of undefined behaviour in the future
+  const { linkedInLogin } = useLinkedIn({
+    clientId: `${process.env.REACT_APP_LINKEDIN_CLIENT_ID}`,
+    redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+    onSuccess: async code => {
+      const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/linkedin", {
+        authorizationToken: code,
+      }, { withCredentials: true });
+      userData.logIn(response.data, from);
+    },
+    scope: "r_emailaddress r_liteprofile",
+    onError: (error) => {
+      console.error(error);
     },
   });
 
-  //Check this incase of undefined behaviour in the future
- const { linkedInLogin } = useLinkedIn({
-   clientId: `${process.env.REACT_APP_LINKEDIN_CLIENT_ID}`,
-   redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
-   onSuccess: async code => {
-     const response = await axios.post<userData>(process.env.REACT_APP_BACKEND_URL + "/oauth/linkedin", {
-       authorizationToken: code,
-     }, { withCredentials: true });
-      userData.logIn(response.data, from);
-   },
-   scope: "r_emailaddress r_liteprofile",
-   onError: (error) => {
-     console.error(error);
-   },
- });
-  
   const githubLogin = () => {
     axios.get(process.env.REACT_APP_BACKEND_URL + "/oauth/github", {
       withCredentials: true, params: {
@@ -252,7 +238,7 @@ const Login = () => {
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              <a className="social-icon" onClick={() => googleLogin()}>
+              <a className="social-icon" href={`${process.env.REACT_APP_BACKEND_URL}/oauth/google?path=${from}`}>
                 <FaGoogle />
               </a>
               <a

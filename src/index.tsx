@@ -6,15 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { StylesProvider } from "@chakra-ui/react";
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 ReactDOM.render(
   <Provider store={store}>
-    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}>
-      <Router>
-        <App />
-      </Router>
-    </GoogleOAuthProvider>
+    <Router>
+      <App />
+    </Router>
   </Provider >,
   document.getElementById('root')
 );
